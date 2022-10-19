@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Email protection by obfuscation
  * Description:       Obfuscate all "mailto:" links to prevent email-harvesting from spammers.
- * Version:           1.0
+ * Version:           1.1
  * Requires at least: 5.0
  * Requires PHP:      5.6
  * Author:            Baptiste Lozano
@@ -24,6 +24,7 @@ define('EMPBO_URL'  , plugins_url('/', __FILE__) );
 function empbo_init() {
 
     require_once(EMPBO_DIR . "/includes/constants.php");
+    require_once(EMPBO_DIR . "/includes/functions.php");
 
 }
 add_action('init', 'empbo_init');

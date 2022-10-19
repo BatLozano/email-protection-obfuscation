@@ -14,7 +14,7 @@ abstract class filters{
     }
 
 
-    public static function replace_in_content($to_filter , $default_editor = ""){
+    public static function replace_in_content($to_filter , $default_editor = "" , $keep_href = false){
 
         if(empty($to_filter)) return $to_filter;
     
@@ -38,9 +38,11 @@ abstract class filters{
     
             $to_filter          = str_replace('"'.$link.'"' , '"" data-empbo="'.$obfusctated_link.'"' , $to_filter);
             $to_filter          = str_replace("'".$link."'" , "'' data-empbo='".$obfusctated_link."'" , $to_filter);
-    
-            $to_filter          = str_replace('href=""' , "" , $to_filter);
-            $to_filter          = str_replace("href=''" , "" , $to_filter);
+
+            if(!$keep_href){
+                $to_filter          = str_replace('href=""' , "" , $to_filter);
+                $to_filter          = str_replace("href=''" , "" , $to_filter);
+            }
     
             $to_filter          = str_replace($mailto["path"] , antispambot($mailto["path"]) , $to_filter);
             
